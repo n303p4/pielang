@@ -52,7 +52,7 @@ def decode(string):
     nstring = string.split()
     brf = []
     for string in nstring:
-        lstring = list(string.replace("ou", "o").replace("oo", "uu").replace("tt", "t").replace("ll", "l"))
+        lstring = list(string.replace("ou", "o").replace("oo", "uu").replace("tt", "t").replace("ll", "l").replace("ff", "f"))
         for index in range(0, len(lstring)):
             char = lstring[index]
             if char in replacement_table.keys():
