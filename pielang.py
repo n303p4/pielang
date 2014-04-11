@@ -52,6 +52,10 @@ def decode(string):
     nstring = string.split()
     brf = []
     for string in nstring:
+        if string == "my":
+            string = "Ik's"
+        elif string == "My":
+            string = "Ik's"
         lstring = list(string.replace("ou", "o").replace("oo", "uu").replace("tt", "t").replace("ll", "l").replace("ff", "f"))
         for index in range(0, len(lstring)):
             char = lstring[index]
