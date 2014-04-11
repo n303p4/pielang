@@ -80,7 +80,9 @@ def decode(string):
                 if lstring[1] in consonants and (lstring[0] + lstring[1]).lower() not in good_starts:
                     lstring[0] = lstring[0].lower()
                     lstring.insert(0, "E")
-        if lstring[-1].lower() == ":" or (lstring[-1].lower() == "." and lstring[-2].lower() == ":"):
+        try: byoop = (lstring[-1].lower() == "." and lstring[-2].lower() == ":")
+        except: byoop = False
+        if lstring[-1].lower() == ":" or byoop:
             lstring.pop()
             if lstring[-1] == ":":
                 lstring[-1] = "."
