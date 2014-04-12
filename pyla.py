@@ -68,7 +68,8 @@ badStarts = {"ez": "z",
              "iau": "yao",
              "iei": "ie",
              "iee": "ie'e",
-             "ieao": "iao"}
+             "ieao": "iao",
+             "qs": "meqs"}
 
 badEndings = {"aop": "ao",
               "pt": "t",
