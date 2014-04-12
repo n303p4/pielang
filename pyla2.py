@@ -70,6 +70,7 @@ doubleReplace = {"hm": "hem",
 
 doubleReplace2 = {"iee": "ie'e",
                   "pao": "po",
+                  "aa": "a",
                   "ea": "ia",
                   "hih": "h",
                   "deshu": "desh",
