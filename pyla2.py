@@ -100,7 +100,8 @@ badEndings = {"aop": "ao",
               "eam": "iam",
               "emh": "em",
               "hy": "hie",
-              "i": "ir"}
+              "i": "ir",
+              "shn": "shnep"}
 
 def decode(string):
     nstring = string.split()
