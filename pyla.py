@@ -60,15 +60,18 @@ doubleReplace = {"hm": "hem",
                  "ii": "ie",
                  "ziwi": "zwi",
                  "zye": "zie",
+                 "shsh": "sh",
                  "pez": "pz"}
 
 badStarts = {"ez": "z",
              "pao": "po",
-             "iau": "yao"}
+             "iau": "yao",
+             "ieao": "iao"}
 
 badEndings = {"aop": "ao",
               "pt": "t",
-              "dy": "die"}
+              "dy": "die",
+              "hy": "hie"}
 
 def decode(string):
     nstring = string.split()
@@ -113,6 +116,10 @@ def decode(string):
             lstring = "nek"
         elif lstring == "Aom":
             lstring = "Nek"
+        elif lstring == "aon":
+            lstring = "nem"
+        elif lstring == "Aon":
+            lstring = "Nem"
         brf.append(lstring)
     return " ".join(brf)
 
