@@ -58,12 +58,16 @@ doubleReplace = {"hm": "hem",
                  "emg": "eng",
                  "yi": "ie",
                  "ii": "ie",
-                 "ziwi": "zwi"}
+                 "ziwi": "zwi",
+                 "zye": "zie",
+                 "pez": "pz"}
 
-badStarts = {"ez": "z"}
+badStarts = {"ez": "z",
+             "pao": "po"}
 
 badEndings = {"aop": "ao",
-              "pt": "t"}
+              "pt": "t",
+              "dy": "die"}
 
 def decode(string):
     nstring = string.split()
@@ -87,16 +91,16 @@ def decode(string):
             for k in ("title", "upper"):
                 lstring = lstring.replace(eval("\"%s\".%s()" % (key, k)), eval("\"%s\".%s()" % (doubleReplace[key], k)))
         for key in badEndings.keys():
-            if lstring.endswith(key):
+            if lstring.endswith(key) and len(lstring) > len(key):
                 lstring = lstring[:-len(key)] + badEndings[key]
             for k in ("title", "upper"):
-                if lstring.endswith(eval("\"%s\".%s()" % (key, k))):
+                if lstring.endswith(eval("\"%s\".%s()" % (key, k))) and len(lstring) > len(key):
                     lstring = lstring[:-len(key)] + eval("\"%s\".%s()" % (badEndings[key], k))
         for key in badStarts.keys():
-            if lstring.startswith(key):
+            if lstring.startswith(key) and len(lstring) > len(key):
                 lstring = badStarts[key] + lstring[len(key):]
             for k in ("title", "upper"):
-                if lstring.startswith(eval("\"%s\".%s()" % (key, k))):
+                if lstring.startswith(eval("\"%s\".%s()" % (key, k))) and len(lstring) > len(key):
                     lstring = eval("\"%s\".%s()" % (badStarts[key], k)) + lstring[len(key):]
         if lstring.endswith("i"):
             lstring += "r"
