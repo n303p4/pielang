@@ -76,8 +76,7 @@ doubleReplace2 = {"iee": "ie'e",
                   "ye": "ie'e"}
 
 doubleReplace3 = {"eez": "ez",
-                  "hyd": "haed",
-                  "wir": "vir"}
+                  "hyd": "haed"}
 
 badStarts = {"ez": "z",
              "gew": "gw",
@@ -88,8 +87,7 @@ badStarts = {"ez": "z",
              "iee": "ie'e",
              "ieao": "iao",
              "qs": "meqs",
-             "qy": "eqy",
-             "wir": "vir"}
+             "qy": "eqy"}
 
 badEndings = {"aop": "ao",
               "pt": "t",
@@ -101,8 +99,7 @@ badEndings = {"aop": "ao",
               "eam": "iam",
               "emh": "em",
               "hy": "hie",
-              "i": "ir",
-              "wir": "vir"}
+              "i": "ir"}
 
 def decode(string):
     nstring = string.split()
