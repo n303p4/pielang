@@ -63,7 +63,8 @@ doubleReplace = {"hm": "hem",
                  "pez": "pz"}
 
 badStarts = {"ez": "z",
-             "pao": "po"}
+             "pao": "po",
+             "iau": "yao"}
 
 badEndings = {"aop": "ao",
               "pt": "t",
@@ -108,6 +109,10 @@ def decode(string):
             lstring += "R"
         if lstring == "E":
             lstring = "Nie"
+        elif lstring == "aom":
+            lstring = "nek"
+        elif lstring == "Aom":
+            lstring = "Nek"
         brf.append(lstring)
     return " ".join(brf)
 
