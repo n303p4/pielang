@@ -101,6 +101,7 @@ doubleReplace2 = {"iee": "ie'e",
 doubleReplace3 = {"eez": "ez",
                   "hyd": "haed",
                   "iao": "ao",
+                  "ieie": "ie",
                   "iiao": "iao"}
 
 badStarts = {"ez": "z",
