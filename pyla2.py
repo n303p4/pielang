@@ -55,7 +55,6 @@ doubleReplace = {"hm": "hem",
                  "ryao": "rao",
                  "aoie": "ie",
                  "iao": "a",
-                 "hyd": "haid",
                  "au": "ao",
                  "emg": "eng",
                  "dsh": "dish",
@@ -73,9 +72,11 @@ doubleReplace2 = {"iee": "ie'e",
                   "pao": "po",
                   "ea": "ia",
                   "hih": "h",
+                  "deshu": "desh",
                   "ye": "ie'e"}
 
-doubleReplace3 = {"eez": "ez"}
+doubleReplace3 = {"eez": "ez",
+                  "hyd": "haed"}
 
 badStarts = {"ez": "z",
              "gew": "gw",
@@ -94,7 +95,7 @@ badEndings = {"aop": "ao",
               "dy": "die",
               "yam": "iam",
               "ay": "ae",
-              "idez": "idz",
+              "aedez": "aedz",
               "eam": "iam",
               "emh": "em",
               "hy": "hie",
@@ -141,6 +142,7 @@ def decode(string):
             for k in ("title", "upper"):
                 if lstring.startswith(eval("\"%s\".%s()" % (key, k))) and len(lstring) > len(key):
                     lstring = eval("\"%s\".%s()" % (badStarts[key], k)) + lstring[len(key):]
+        lstring = lstring.replace("ie'e", "'ye")
         if lstring == "E":
             lstring = "Nie"
         elif lstring == "aom":
