@@ -124,10 +124,10 @@ def decode(string):
                     else:
                         if x == key:
                             lstring = lstring.replace(key, dic[key], 1)
-                            char += len(key)
+                            char += len(dic[key])
                         elif x.lower() == key:
                             lstring = lstring.replace(key, dic[key].capitalize(), 1)
-                            char += len(key)
+                            char += len(dic[key])
         for key in badEndings.keys():
             if lstring.endswith(key) and len(lstring) > len(key):
                 lstring = lstring[:-len(key)] + badEndings[key]
