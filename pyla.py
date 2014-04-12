@@ -59,6 +59,7 @@ doubleReplace = {"hm": "hem",
                  "yi": "ie",
                  "ii": "ie",
                  "ziwi": "zwi",
+                 "zdsh": "zdesh",
                  "zye": "zie",
                  "shsh": "sh",
                  "pez": "pz"}
