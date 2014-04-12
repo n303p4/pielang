@@ -45,6 +45,8 @@ replacement_table = {"a": "ao",
 
 doubleReplace = {"hm": "hem",
                  "aa": "a'a",
+                 "iee": "ie'e",
+                 "ieau": "yao",
                  "hh": "h'h",
                  "tsh": "tash",
                  "csh": "cash"}
@@ -70,6 +72,12 @@ def decode(string):
             lstring = lstring.replace(key, doubleReplace[key])
             for k in ("title", "upper"):
                 lstring = lstring.replace(eval("\"%s\".%s()" % (key, k)), eval("\"%s\".%s()" % (doubleReplace[key], k)))
+        if lstring.endswith("i"):
+            lstring += "r"
+        elif lstring.endswith("I"):
+            lstring += "R"
+        if lstring == "E":
+            lstring = "Ek"
         brf.append(lstring)
     return " ".join(brf)
 
