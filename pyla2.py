@@ -54,7 +54,6 @@ doubleReplace = {"hm": "hem",
                  "aomt": "ont",
                  "ryao": "rao",
                  "aoie": "ie",
-                 "iao": "a",
                  "au": "ao",
                  "emg": "eng",
                  "dsh": "dish",
@@ -100,7 +99,9 @@ doubleReplace2 = {"iee": "ie'e",
                   "ye": "ie'e"}
 
 doubleReplace3 = {"eez": "ez",
-                  "hyd": "haed"}
+                  "hyd": "haed",
+                  "iao": "ao",
+                  "iiao": "iao"}
 
 badStarts = {"ez": "z",
              "gew": "gw",
