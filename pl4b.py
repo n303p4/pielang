@@ -44,12 +44,16 @@ replacement_table = {"a": "ao",
                      "z": "f"}
 
 doubleReplace = {"hm": "hem",
-                 "aa": "a'a",
+                 "aao": "a",
                  "iee": "ie'e",
                  "ieau": "yao",
                  "hh": "h'h",
                  "tsh": "tash",
-                 "csh": "cash"}
+                 "csh": "cash",
+                 "hup": "hurp",
+                 "aomt": "ont",
+                 "ryao": "rao",
+                 "aoie": "aie"}
 
 def decode(string):
     nstring = string.split()
@@ -77,7 +81,7 @@ def decode(string):
         elif lstring.endswith("I"):
             lstring += "R"
         if lstring == "E":
-            lstring = "Ek"
+            lstring = "Nie"
         brf.append(lstring)
     return " ".join(brf)
 
