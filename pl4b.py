@@ -43,6 +43,12 @@ replacement_table = {"a": "ao",
                      "y": "ie",
                      "z": "f"}
 
+doubleReplace = {"hm": "hem",
+                 "aa": "a'a",
+                 "hh": "h'h",
+                 "tsh": "tash",
+                 "csh": "cash"}
+
 def decode(string):
     nstring = string.split()
     brf = []
@@ -60,7 +66,10 @@ def decode(string):
             elif char.lower() in replacement_table.keys():
                 lstring[index] = replacement_table[char.lower()].replace(char2, "").title()
         lstring = "".join(lstring)
-        lstring = lstring.replace("aa", "a'a").replace("Aa", "A'a").replace("AA", "A'A")
+        for key in doubleReplace.keys():
+            lstring = lstring.replace(key, doubleReplace[key])
+            for k in ("title", "upper"):
+                lstring = lstring.replace(eval("\"%s\".%s()" % (key, k)), eval("\"%s\".%s()" % (doubleReplace[key], k)))
         brf.append(lstring)
     return " ".join(brf)
 
