@@ -66,6 +66,7 @@ doubleReplace = {"hm": "hem",
 badStarts = {"ez": "z",
              "pao": "po",
              "iau": "yao",
+             "iei": "ie",
              "ieao": "iao"}
 
 badEndings = {"aop": "ao",
