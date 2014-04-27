@@ -260,11 +260,11 @@ table4={"ob": "[s]°b[/s]",
         "oy": "[s]°y[/s]",
         "oz": "[s]°z[/s]"}
 
-table5={"a": "",
-        "e": "",
-        "i": "",
-        "o": "",
-        "u": ""}
+table5={"a": "ァ",
+        "e": "ェ",
+        "i": "ィ",
+        "o": "ォ",
+        "u": "ゥ"}
 
 table6={"[s]": "[strike]",
         "[/s]": "[/strike]",
@@ -288,8 +288,10 @@ def decode(string):
 def main(argv=[]):
     x = " ".join(argv)
     if len(x) == 0:
-        x = input("Enter string here: ")
-    print(decode(x))
+        x = input("> ")
+    while 1:
+        print(decode(x))
+        x = input("> ")
 
 if __name__ == "__main__":
     main(sys.argv[1::])
