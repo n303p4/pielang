@@ -263,7 +263,6 @@ table4={"ob": "°b̅",
 table5={}
 
 def decode(string):
-    string = string.lower()
     brf = []
     nstring = string.split()
     for lstring in nstring:
@@ -271,6 +270,8 @@ def decode(string):
             for key in dic.keys():
                 if key in lstring:
                     lstring = lstring.replace(key, dic[key])
+                if key.capitalize() in lstring:
+                    lstring = lstring.replace(key.capitalize(), dic[key].upper())
         brf.append(lstring)
     return "[font=DejaVu Sans]" + " ".join(brf) + "[/font]"
 
