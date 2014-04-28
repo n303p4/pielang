@@ -277,20 +277,26 @@ table6={"[s]": "[strike]",
         "[v]": "[u]",
         "[/v]": "[/u]"}
 
+table7=["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+
 def decode(string):
     brf = []
     nstring = string.split()
     for lstring in nstring:
-        for dic in (table0,table1,table2,table3,table4,table5,table6):
-            for key in dic.keys():
-                if key in lstring:
-                    lstring = lstring.replace(key, dic[key])
-                if key.capitalize() in lstring:
-                    r = dic[key]
-                    if "[/" in r:
-                        lstring = lstring.replace(key.capitalize(), r.replace("]", "]!", 1))
-                    else:
-                        lstring = lstring.replace(key.capitalize(), "!" + r)
+        for dic in (table0,table1,table2,table3,table4,table5,table6,table7):
+            if type(dic) is list:
+                for char in dic:
+                    lstring = lstring.replace(char, "!" + char.lower())
+            else:
+                for key in dic.keys():
+                    if key in lstring:
+                        lstring = lstring.replace(key, dic[key])
+                    if key.capitalize() in lstring:
+                        r = dic[key]
+                        if "[/" in r:
+                            lstring = lstring.replace(key.capitalize(), r.replace("]", "]!", 1))
+                        else:
+                            lstring = lstring.replace(key.capitalize(), "!" + r)
         brf.append(lstring)
     return " ".join(brf)
 
