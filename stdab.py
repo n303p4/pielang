@@ -6,6 +6,8 @@ import sys
 
 rtable = "[bcdfghjklmnpqrstvwxyz][aeiou]"
 
+table7=["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+
 table0={"y": "i"}
 
 table1={"ba": "B",
@@ -277,13 +279,11 @@ table6={"[s]": "[strike]",
         "[v]": "[u]",
         "[/v]": "[/u]"}
 
-table7=["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
-
 def decode(string):
     brf = []
     nstring = string.split()
     for lstring in nstring:
-        for dic in (table0,table1,table2,table3,table4,table5,table6,table7):
+        for dic in (table7,table0,table1,table2,table3,table4,table5,table6):
             if type(dic) is list:
                 for char in dic:
                     lstring = lstring.replace(char, "!" + char.lower())
