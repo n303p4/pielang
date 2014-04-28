@@ -302,12 +302,13 @@ def decode(string):
     return u" ".join(brf)
 
 def main(argv=[]):
+    print "Standard Abugida Converter (Python %s)" % (sys.version,)
     x = u" ".join(argv)
     if len(x) == 0:
-        x = raw_input(u"> ")
+        x = raw_input(u">>> ")
     while 1:
         print decode(x)
-        x = raw_input(u"> ")
+        x = raw_input(u">>> ")
 
 if __name__ == u"__main__":
     main(sys.argv[1::])
