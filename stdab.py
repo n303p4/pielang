@@ -264,6 +264,12 @@ table4={"ob": "[s]°b[/s]",
         "oy": "[s]°y[/s]",
         "oz": "[s]°z[/s]"}
 
+table5={"a": "a",
+        "e": "e",
+        "i": "i",
+        "o": "o",
+        "u": "u"}
+
 table6={"[s]": "[strike]",
         "[/s]": "[/strike]",
         "[f]": "[i]",
@@ -275,7 +281,7 @@ def decode(string):
     brf = []
     nstring = string.split()
     for lstring in nstring:
-        for dic in (table0,table1,table2,table3,table4,table6):
+        for dic in (table0,table1,table2,table3,table4,table5,table6):
             for key in dic.keys():
                 if key in lstring:
                     lstring = lstring.replace(key, dic[key])
