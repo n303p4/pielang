@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# "Standard Abugida"
+# "Standard Abugida (HTML)"
 
 import sys
 
