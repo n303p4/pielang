@@ -303,7 +303,7 @@ def decode(string):
 
 def main(argv=[]):
     vinfo = tuple(str(x) for x in sys.version_info[:3])
-    print "Standard Abugida Converter (Python %s)" % (".".join(vinfo),)
+    print u"Standard Abugida Converter (Python %s)" % (".".join(vinfo),)
     x = u" ".join(argv)
     if len(x) == 0:
         x = raw_input(u">>> ")
