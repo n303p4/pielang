@@ -3,7 +3,7 @@
 
 # "Standard Abugida"
 
-import sys
+import sys, re
 
 rtable = "[bcdfghjklmnpqrstvwxyz][aeiou]"
 
@@ -280,7 +280,7 @@ table6={"[s]": "[strike]",
 
 table7=["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
 
-def decode(string, translate):
+def decode(string, translate=False, html_mode=False):
     brf = []
     nstring = string.split()
     for lstring in nstring:
@@ -290,14 +290,23 @@ def decode(string, translate):
                     lstring = lstring.replace(char, "↑" + char.lower())
             else:
                 for key in dic.keys():
+                    r = dic[key]
+                    if html_mode:
+                        r = r.replace("[", "<").replace("]", ">")
                     if key in lstring:
-                        lstring = lstring.replace(key, dic[key])
+                        lstring = lstring.replace(key, r)
                     if key.capitalize() in lstring:
-                        r = dic[key]
                         if "[/" in r:
                             lstring = lstring.replace(key.capitalize(), r.replace("]", "]↑", 1))
                         else:
                             lstring = lstring.replace(key.capitalize(), "↑" + r)
+        if html_mode:
+            lstring = list(lstring)
+            for i in range(0, len(lstring)):
+                if not re.match("[1-9a-zA-Z\]\[/!?\"'.,()<>]", lstring[i]):
+                    try: lstring[i] = "&#%s;" % (ord(lstring[i]),)
+                    except: print(lstring[i])
+            lstring = "".join(lstring)
         brf.append(lstring)
     return " ".join(brf) + ("\n[i]%s[/i]" % (string,) if translate else "")
 
@@ -306,7 +315,7 @@ def main(argv=[]):
     print("Standard Abugida Converter (Python %s)" % (".".join(vinfo),))
     print("Enter blank input for options...")
     x = " ".join(argv)
-    options = {"translation": False}
+    options = {"translation": False, "HTML mode": False}
     if len(x) == 0:
         x = input("> ")
     while 1:
@@ -314,7 +323,7 @@ def main(argv=[]):
             y = input("Options\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
             changed = False
             for key in options.keys():
-                if y.lower() == str(key)[0]:
+                if y.lower() == str(key)[0].lower():
                     options[key] = not options[key]
                     print("%s %s." % (key.capitalize(), "enabled" if options[key] else "disabled"))
                     changed = True
@@ -322,7 +331,7 @@ def main(argv=[]):
             if not changed:
                 print("Nothing changed.")
         else:
-            print(decode(x, options["translation"]))
+            print(decode(x, options["translation"], options["HTML mode"]))
         x = input("> ")
 
 if __name__ == "__main__":
