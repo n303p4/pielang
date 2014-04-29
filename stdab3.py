@@ -143,7 +143,7 @@ def decode(string, translate=False, html_mode=False):
                     matchlist = re.findall(key, lstring)
                     capmatchlist = [x.capitalize() for x in re.findall(key, lstring)]
                     for match in matchlist:
-                        lstring = lstring.replace(match, (r % (match[0],) if "%s" in r else r).lower())
+                        lstring = lstring.replace(match, (r % ((match[0] if re.match("[aeiou]", match[1]) else match[1]),) if "%s" in r else r).lower())
         if html_mode:
             lstring = list(lstring)
             for i in range(0, len(lstring)):
