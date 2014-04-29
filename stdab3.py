@@ -311,11 +311,16 @@ def main(argv=[]):
         x = input("> ")
     while 1:
         if x == "":
-            y = input("Enter an option here:\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
+            y = input("OPTIONS\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
+            changed = False
             for key in options.keys():
                 if y.lower() == str(key)[0]:
                     options[key] = not options[key]
                     print("%s %s." % (key.capitalize(), "enabled" if options[key] else "disabled"))
+                    changed = True
+                    break
+            if not changed:
+                print("Nothing changed.")
         else:
             print(decode(x, options["translation"]))
         x = input("> ")
