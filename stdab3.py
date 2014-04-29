@@ -32,38 +32,91 @@ table1 = {"ba": "β",
           "[bcdfghjklmnpqrstvwxz]e": "[b]%s[/b]",
           "[bcdfghjklmnpqrstvwxz]i": "[f]%s[/f]",
           "[bcdfghjklmnpqrstvwxz]o": "[s]%s[/s]",
-          "[bcdfghjklmnpqrstvwxz]u": "[v]%s[/v]"}
+          "[bcdfghjklmnpqrstvwxz]u": "[v]%s[/v]",
+          "Ba": "↑β",
+          "Ca": "↑χ",
+          "Da": "↑δ",
+          "Fa": "↑φ",
+          "Ga": "↑γ",
+          "Ha": "↑η",
+          "Ja": "↑ϳ",
+          "Ka": "↑κ",
+          "La": "↑λ",
+          "Ma": "↑μ",
+          "Na": "↑ν",
+          "Pa": "↑π",
+          "Qa": "↑ϟ",
+          "Ra": "↑ρ",
+          "Sa": "↑σ",
+          "Ta": "↑τ",
+          "Va": "↑ϐ",
+          "Wa": "↑ω",
+          "Xa": "↑ξ",
+          "Za": "↑ζ",
+          "[BCDFGHJKLMNPQRSTVWXZ]e": "[b]↑%s[/b]",
+          "[BCDFGHJKLMNPQRSTVWXZ]i": "[f]↑%s[/f]",
+          "[BCDFGHJKLMNPQRSTVWXZ]o": "[s]↑%s[/s]",
+          "[BCDFGHJKLMNPQRSTVWXZ]u": "[v]↑%s[/v]"}
 
 table2 = {"ab": "°β",
           "ac": "°χ",
           "ad": "°δ",
           "af": "°φ",
           "ga": "°γ",
-          "ha": "°η",
-          "ja": "°ϳ",
-          "ka": "°κ",
-          "la": "°λ",
-          "ma": "°μ",
-          "na": "°ν",
-          "pa": "°π",
-          "qa": "°ϟ",
-          "ra": "°ρ",
-          "sa": "°σ",
-          "ta": "°τ",
-          "va": "°ϐ",
-          "wa": "°ω",
-          "xa": "°ξ",
-          "za": "°ζ",
+          "ah": "°η",
+          "aj": "°ϳ",
+          "ak": "°κ",
+          "al": "°λ",
+          "am": "°μ",
+          "an": "°ν",
+          "ap": "°π",
+          "aq": "°ϟ",
+          "ar": "°ρ",
+          "as": "°σ",
+          "at": "°τ",
+          "av": "°ϐ",
+          "aw": "°ω",
+          "ax": "°ξ",
+          "az": "°ζ",
           "e[bcdfghjklmnpqrstvwxz]": "[b]°%s[/b]",
           "i[bcdfghjklmnpqrstvwxz]": "[f]°%s[/f]",
           "o[bcdfghjklmnpqrstvwxz]": "[s]°%s[/s]",
-          "u[bcdfghjklmnpqrstvwxz]": "[v]°%s[/v]"}
+          "u[bcdfghjklmnpqrstvwxz]": "[v]°%s[/v]",
+          "Ab": "↑°β",
+          "Ac": "↑°χ",
+          "Ad": "↑°δ",
+          "Af": "↑°φ",
+          "Ag": "↑°γ",
+          "Ah": "↑°η",
+          "Aj": "↑°ϳ",
+          "Ak": "↑°κ",
+          "Al": "↑°λ",
+          "Am": "↑°μ",
+          "An": "↑°ν",
+          "Ap": "↑°π",
+          "Aq": "↑°ϟ",
+          "Ar": "↑°ρ",
+          "As": "↑°σ",
+          "At": "↑°τ",
+          "Av": "↑°ϐ",
+          "Aw": "↑°ω",
+          "Ax": "↑°ξ",
+          "Az": "↑°ζ",
+          "E[bcdfghjklmnpqrstvwxz]": "[b]↑°%s[/b]",
+          "I[bcdfghjklmnpqrstvwxz]": "[f]↑°%s[/f]",
+          "O[bcdfghjklmnpqrstvwxz]": "[s]↑°%s[/s]",
+          "U[bcdfghjklmnpqrstvwxz]": "[v]↑°%s[/v]"}
 
 table5={"a": "α",
         "e": "ε",
         "i": "ι",
         "o": "ο",
-        "u": "υ"}
+        "u": "υ",
+        "A": "↑α",
+        "E": "↑ε",
+        "I": "↑ι",
+        "O": "↑ο",
+        "U": "↑υ"}
 
 table6={"\[s\]": "[strike]",
         "\[/s\]": "[/strike]",
@@ -87,13 +140,10 @@ def decode(string, translate=False, html_mode=False):
                     r = dic[key]
                     if html_mode:
                         r = r.replace("[", "<").replace("]", ">")
-                    for match in re.findall(key, lstring):
-                        lstring = lstring.replace(match, (r % (match[0],) if "%s" in r else r))
-                    if key.capitalize() in lstring:
-                        if "[/" in r:
-                            lstring = lstring.replace(key.capitalize(), r.replace("]", "]↑", 1))
-                        else:
-                            lstring = lstring.replace(key.capitalize(), "↑" + r)
+                    matchlist = re.findall(key, lstring)
+                    capmatchlist = [x.capitalize() for x in re.findall(key, lstring)]
+                    for match in matchlist:
+                        lstring = lstring.replace(match, (r % (match[0],) if "%s" in r else r).lower())
         if html_mode:
             lstring = list(lstring)
             for i in range(0, len(lstring)):
