@@ -139,6 +139,7 @@ def decode(string, translate=False, html_mode=False):
                 for key in dic.keys():
                     r = dic[key]
                     if html_mode:
+                        key = key.replace("\[", "<").replace("\]", ">")
                         r = r.replace("[", "<").replace("]", ">")
                     matchlist = re.findall(key, lstring)
                     capmatchlist = [x.capitalize() for x in re.findall(key, lstring)]
