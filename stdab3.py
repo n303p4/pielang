@@ -280,7 +280,7 @@ table6={"[s]": "[strike]",
 
 table7=["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
 
-def decode(string):
+def decode(string, translate):
     brf = []
     nstring = string.split()
     for lstring in nstring:
@@ -299,17 +299,26 @@ def decode(string):
                         else:
                             lstring = lstring.replace(key.capitalize(), "↑" + r)
         brf.append(lstring)
-    return " ".join(brf)
+    return " ".join(brf) + ("\n[i]%s[/i]" % (string,) if translate else "")
 
 def main(argv=[]):
     vinfo = tuple(str(x) for x in sys.version_info[:3])
     print("Standard Abugida Converter (Python %s)" % (".".join(vinfo),))
+    print("Enter blank input for options...")
     x = " ".join(argv)
+    options = {"translation": False}
     if len(x) == 0:
-        x = input(">>> ")
+        x = input("> ")
     while 1:
-        print(decode(x))
-        x = input(">>> ")
+        if x == "":
+            y = input("Enter an option here:\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
+            for key in options.keys():
+                if y.lower() == str(key)[0]:
+                    options[key] = not options[key]
+                    print("%s %s." % (key.capitalize(), "enabled" if options[key] else "disabled"))
+        else:
+            print(decode(x, options["translation"]))
+        x = input("> ")
 
 if __name__ == "__main__":
     main(sys.argv[1::])
