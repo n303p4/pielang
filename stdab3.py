@@ -311,7 +311,7 @@ def main(argv=[]):
         x = input("> ")
     while 1:
         if x == "":
-            y = input("OPTIONS\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
+            y = input("Options\n%s\n>>> " % ("\n".join([x[0][0] + ": " + ("Disable " if x[1] else "Enable ") + x[0] for x in options.items()])))
             changed = False
             for key in options.keys():
                 if y.lower() == str(key)[0]:
