@@ -3,7 +3,7 @@
 
 # "Reverse alphabet cipher"
 
-import sys, re
+import sys
 
 table0 = {"a": "z",
           "b": "y",
