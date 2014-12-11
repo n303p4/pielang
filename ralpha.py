@@ -38,7 +38,7 @@ def decode(string, translate=False, html_mode=False):
         if character in table0.keys():
             array.append(table0[character])
         elif character.lower() in table0.keys():
-            array.append(table0[character].upper())
+            array.append(table0[character.lower()].upper())
         else:
             array.append(character)
     if translate:
