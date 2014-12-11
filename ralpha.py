@@ -30,39 +30,15 @@ table0 = {"a": "z",
           "w": "d",
           "x": "c",
           "y": "b",
-          "z": "a",
-          "A": "Z",
-          "B": "Y",
-          "C": "X",
-          "D": "W",
-          "E": "V",
-          "F": "U",
-          "G": "T",
-          "H": "S",
-          "I": "R",
-          "J": "Q",
-          "K": "P",
-          "L": "O",
-          "M": "N",
-          "N": "M",
-          "O": "L",
-          "P": "K",
-          "Q": "J",
-          "R": "I",
-          "S": "H",
-          "T": "G",
-          "U": "F",
-          "V": "E",
-          "W": "D",
-          "X": "C",
-          "Y": "B",
-          "Z": "A"}
+          "z": "a"}
 
 def decode(string, translate=False, html_mode=False):
     array = []
     for character in string:
         if character in table0.keys():
             array.append(table0[character])
+        elif character.lower() in table0.keys():
+            array.append(table0[character].upper())
         else:
             array.append(character)
     if translate:
@@ -75,7 +51,7 @@ def decode(string, translate=False, html_mode=False):
 
 def main(argv=[]):
     vinfo = tuple(str(x) for x in sys.version_info[:3])
-    print("QrivaN Cipher (Python %s)" % (".".join(vinfo),))
+    print("Reverse Alphabet Cipher (Python %s)" % (".".join(vinfo),))
     print("Enter blank input for options...")
     x = " ".join(argv)
     options = {"translation": False, "HTML mode": False}
